@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-container
+    ports:
+      - "1433:1433" # Mapeia a porta do host para a porta do contêiner
+    environment:
+      - ACCEPT_EULA=Y # Aceitar os termos da licença
+      - MSSQL_SA_PASSWORD=YourStrong!Password # Senha do usuário "sa"
+      - MSSQL_PID=Developer # Define a edição como Developer (uso gratuito para desenvolvimento/testes)
+    volumes:
+      - sqlserver_data:/var/opt/mssql # Persistência de dados
+
+volumes:
+  sqlserver_data:
+
+
+  # Edição do SQL Server: Modifique MSSQL_PID para Standard, Enterprise, Express ou Developer, dependendo do seu caso.
+
+  # Porta: Se precisar de outra porta no host, altere 1433:1433 para, por exemplo, 15432:1433.
+
+  # Server name: localhost,1433 (use localhost se o SSMS estiver no mesmo host do Docker; adicione ,1433 para especificar a porta).

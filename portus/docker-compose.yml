@@ -1,0 +1,45 @@
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    ports:
+      - "5001:5001"
+    volumes:
+      - registry_data:/var/lib/registry
+    networks:
+      - portus-network
+    user: "1000:1000"  # Adicionando permissões adequadas
+
+  portus:
+    image: opensuse/portus
+    container_name: portus
+    ports:
+      - "3001:3001"
+    environment:
+      - PORTUS_DB_HOST=portus-db
+      - PORTUS_SECRET_KEY_BASE=some_secret_key
+      - PORTUS_APPLICATION_PORT=3000
+      - PORTUS_MACHINE_FQDN=localhost
+    depends_on:
+      - portus-db
+      - registry
+    networks:
+      - portus-network
+    user: "1000:1000"  # Adicionando permissões adequadas
+
+  portus-db:
+    image: mariadb:10.5
+    container_name: portus-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=portus
+    networks:
+      - portus-network
+
+volumes:
+  registry_data:
+
+networks:
+  portus-network:
+    driver: bridge
+
