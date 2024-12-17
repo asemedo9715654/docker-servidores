@@ -38,3 +38,8 @@ Repositório para configuração e gerenciamento de múltiplos serviços utiliza
    ```bash
    git clone https://github.com/seu-usuario/docker-servidores.git
    cd docker-servidores
+
+1. Rodar os projectos no docker:
+  ```bash
+  docker-compose up -d
+
