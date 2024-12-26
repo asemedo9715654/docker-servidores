@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  ansible:
+    image: python:3.9-slim
+    container_name: ansible
+    volumes:
+      # Mapeia o diretório local para o container
+      # - ./playbooks:/ansible/playbooks
+      - "C:/servidor/docker-servidores/ansible/playbooks:/ansible/playbooks"
+
+      # Mapeia a pasta SSH do Windows para o container (atualize para o caminho correto)
+      - C:/Users/angelosemedo/.ssh:/root/.ssh:ro
+    working_dir: /ansible
+    environment:
+      # Desativa a verificação de chave de host do Ansible
+      - ANSIBLE_HOST_KEY_CHECKING=False
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null  # Para manter o container ativo para debug
+
