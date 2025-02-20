@@ -1,0 +1,2 @@
+O Mautic é uma plataforma de automação de marketing de código aberto,
+ e o uso do Docker Compose facilita sua instalação e gerenciamento.

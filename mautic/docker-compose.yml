@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  mautic:
+    image: mautic/mautic:latest
+    container_name: mautic
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      MAUTIC_DB_HOST: db
+      MAUTIC_DB_USER: mautic
+      MAUTIC_DB_PASSWORD: mauticpassword
+      MAUTIC_DB_NAME: mautic
+    depends_on:
+      - db
+    volumes:
+      - mautic_data:/var/www/html
+
+  db:
+    image: mysql:5.7
+    container_name: mautic_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mautic
+      MYSQL_USER: mautic
+      MYSQL_PASSWORD: mauticpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mautic_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+volumes:
+  mautic_data:
+  db_data:
