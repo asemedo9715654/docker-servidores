@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  phabricator:
+    image: phabricator/phabricator
+    container_name: phabricator
+    restart: always
+    ports:
+      - "8282:80"  # Web interface port
+      - "22:22"  # SSH (if needed)
+    environment:
+      - PHABRICATOR_DB_HOST=phabricator-db
+      - PHABRICATOR_DB_NAME=phabricator
+      - PHABRICATOR_DB_USER=phabricator
+      - PHABRICATOR_DB_PASSWORD=phabricatorpass
+      - PHABRICATOR_CONFIG__adminEmail=youremail@example.com
+    depends_on:
+      - phabricator-db
+    volumes:
+      - phabricator_data:/var/www/html
+
+  phabricator-db:
+    image: mysql:5.7
+    container_name: phabricator-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=phabricator
+      - MYSQL_USER=phabricator
+      - MYSQL_PASSWORD=phabricatorpass
+    volumes:
+      - phabricator_db_data:/var/lib/mysql
+
+volumes:
+  phabricator_data:
+  phabricator_db_data:

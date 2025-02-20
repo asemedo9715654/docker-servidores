@@ -1,0 +1,24 @@
+Save the docker-compose.yml file.
+
+Run the following command in the same directory:
+
+bash
+Copy
+docker-compose up -d
+3-Access pgAdmin at http://localhost:5050 and log in with the credentials:
+
+Email: admin@example.com
+
+Password: admin
+
+4-Connect to the PostgreSQL database in pgAdmin:
+
+Host: postgres
+
+Port: 5432
+
+Database: mydatabase
+
+Username: admin
+
+Password: admin
