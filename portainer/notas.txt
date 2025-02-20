@@ -1,0 +1,4 @@
+Portainer é uma ferramenta de gerenciamento para Docker que facilita
+a administração de contêineres, imagens, volumes e redes através de 
+uma interface web intuitiva. Ele pode ser implantado rapidamente 
+usando Docker Compose.
