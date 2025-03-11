@@ -1,0 +1,21 @@
+{
+    "realm": "abcd",
+    "enabled": true,
+    "clients": [
+      {
+        "clientId": "xmx",
+        "enabled": true,
+        "publicClient": false,
+        "directAccessGrantsEnabled": true,
+        "secret": "1234"
+      },
+      {
+        "clientId": "xmx222",
+        "enabled": true,
+        "publicClient": false,
+        "directAccessGrantsEnabled": true,
+        "secret": "1234"
+      }
+    ]
+  }
+  
