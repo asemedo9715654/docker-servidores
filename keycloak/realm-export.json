@@ -1,21 +1,37 @@
 {
-    "realm": "abcd",
-    "enabled": true,
-    "clients": [
-      {
-        "clientId": "xmx",
-        "enabled": true,
-        "publicClient": false,
-        "directAccessGrantsEnabled": true,
-        "secret": "1234"
-      },
-      {
-        "clientId": "xmx222",
-        "enabled": true,
-        "publicClient": false,
-        "directAccessGrantsEnabled": true,
-        "secret": "1234"
+  "realm": "abcd",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "xmx",
+      "enabled": true,
+      "publicClient": false,
+      "directAccessGrantsEnabled": true,
+      "secret": "1234"
+    },
+    {
+      "clientId": "xmx222",
+      "enabled": true,
+      "publicClient": false,
+      "directAccessGrantsEnabled": true,
+      "secret": "1234"
+    }
+  ],
+  "users": [
+    {
+      "username": "angelo",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "senha123",
+          "temporary": false
+        }
+      ],
+      "clientRoles": {
+        "xmx": ["user"],
+        "xmx222": ["admin"]
       }
-    ]
-  }
-  
+    }
+  ]
+}
