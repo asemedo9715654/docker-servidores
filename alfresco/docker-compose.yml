@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  alfresco:
+    image: alfresco/alfresco-content-repository-community:7.4.0
+    ports:
+      - "${ALFRESCO_SHARE_PORT}:8080"
+    environment:
+      JAVA_OPTS: >
+        -Ddb.username=${ALFRESCO_DB_USER}
+        -Ddb.password=${ALFRESCO_DB_PASSWORD}
+        -Ddb.url=jdbc:postgresql://postgres:5432/${ALFRESCO_DB_NAME}
+        -Dsolr.host=solr6
+        -Dsolr.port=8983
+        -Dshare.url=http://localhost:${ALFRESCO_SHARE_PORT}/share
+        -Dalfresco.admin.password=${ALFRESCO_ADMIN_PASSWORD}
+    depends_on:
+      - postgres
+      - solr6
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ${ALFRESCO_DB_NAME}
+      POSTGRES_USER: ${ALFRESCO_DB_USER}
+      POSTGRES_PASSWORD: ${ALFRESCO_DB_PASSWORD}
+    volumes:
+      - alfresco_db_data:/var/lib/postgresql/data
+    ports:
+      - "${ALFRESCO_DB_PORT}:5432"
+
+  solr6:
+    image: alfresco/alfresco-search-services:2.0.6
+    environment:
+      SOLR_ALFRESCO_URL: http://alfresco:8080/alfresco
+    ports:
+      - "8983:8983"
+
+volumes:
+  alfresco_db_data:
