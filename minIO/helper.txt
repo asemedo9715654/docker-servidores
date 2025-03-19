@@ -1,0 +1,9 @@
+O MinIO é uma alternativa de armazenamento compatível com a API do Amazon S3,
+ ideal para armazenar objetos como arquivos, imagens, backups, etc.
+
+
+
+
+URL: http://localhost:9001
+Usuário: admin
+Senha: admin123
