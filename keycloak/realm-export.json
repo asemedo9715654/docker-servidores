@@ -1,26 +1,61 @@
 {
-  "realm": "abcd",
+  "realm": "helsaparamedicpro",
   "enabled": true,
   "clients": [
     {
-      "clientId": "xmx",
+      "clientId": "helsaparamedicpro_api",
       "enabled": true,
       "publicClient": false,
       "directAccessGrantsEnabled": true,
-      "secret": "1234"
-    },
+      "secret": "9a8f7b6c-1234-5678-abcd-1234567890ef",
+      "attributes": {
+         "access.token.include.client.audience": "true",
+        "id.token.include.client.audience": "true" 
+      },
+      "protocolMappers": [
+        {
+          "name": "audience-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "helsaparamedicpro_api",
+            "id.token.claim": "true",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "clientScopes": [
     {
-      "clientId": "xmx222",
-      "enabled": true,
-      "publicClient": false,
-      "directAccessGrantsEnabled": true,
-      "secret": "1234"
+      "name": "audience",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "audience-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "helsaparamedicpro_api",
+            "id.token.claim": "true",
+            "access.token.claim": "true"
+          }
+        }
+      ]
     }
   ],
   "users": [
     {
       "username": "angelo",
       "enabled": true,
+      "firstName": "Ângelo",
+      "lastName": "Semedo",
+      "email": "angelo.semedo@example.com",
+      "requiredActions": [],
       "credentials": [
         {
           "type": "password",
@@ -29,9 +64,17 @@
         }
       ],
       "clientRoles": {
-        "xmx": ["user"],
-        "xmx222": ["admin"]
+        "helsaparamedicpro_api": [
+          "other","admin","test"
+        ]
+      
+      },
+      "attributes": {
+        "locale": "pt-BR"
       }
     }
+  ],
+  "defaultDefaultClientScopes": [
+    "audience"
   ]
 }
