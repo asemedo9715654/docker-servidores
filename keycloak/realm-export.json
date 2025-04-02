@@ -4,6 +4,8 @@
   "clients": [
     {
       "clientId": "helsaparamedicpro_api",
+      "name" : "Helsa Paramedic Pro Api",
+      "description" : "Helsa Paramedic Pro Api - ENDPOINTS",
       "enabled": true,
       "publicClient": false,
       "directAccessGrantsEnabled": true,
