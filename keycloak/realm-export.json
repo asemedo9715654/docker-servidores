@@ -24,6 +24,42 @@
             "id.token.claim": "true",
             "access.token.claim": "true"
           }
+        },
+        {
+          "name": "email-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "config": {
+            "user.attribute": "email",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "email",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "name": "full-name-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "config": {
+            "user.attribute": "fullName",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "full_name",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "name": "roles-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-role-mapper",
+          "config": {
+            "user.role.attribute": "clientRoles",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "roles",
+            "jsonType.label": "String"
+          }
         }
       ]
     }
@@ -77,6 +113,8 @@
     }
   ],
   "defaultDefaultClientScopes": [
-    "audience"
+    "audience",
+    "profile",
+    "email"
   ]
 }
