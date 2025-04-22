@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  gogs:
+    image: gogs/gogs
+    container_name: gogs
+    ports:
+      - "10022:22"
+      - "3800:3000"
+    volumes:
+      - ./gogs:/data
