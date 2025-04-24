@@ -6,7 +6,7 @@ services:
     restart: always
     hostname: 'localhost'
     ports:
-      - '8080:80'      # Porta HTTP para acessar no navegador
+      - '8181:80'      # Porta HTTP para acessar no navegador
       - '4433:443'     # Porta HTTPS (não obrigatória para localhost)
       - '2222:22'      # Porta SSH para repositórios Git
     volumes:
