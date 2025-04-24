@@ -7,6 +7,7 @@ services:
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+      - LOG_LEVEL=INFO  # Define o nível de log - LOG_LEVEL=INFO  # Define o nível de log
     ports:
       - "8180:8080"
     volumes:
@@ -16,6 +17,11 @@ services:
     command:
       - start-dev
       - --import-realm
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://192.168.1.100:12201"  # Substitua pelo IP ou hostname do seu servidor Seq
+        tag: "keycloak"
 
 volumes:
   keycloak_data:

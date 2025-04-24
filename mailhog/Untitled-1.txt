@@ -1,0 +1,3 @@
+./cx.exe scan create --project-name "SIGMA" --branch "develop" -s "C:\Users\angelosemedo\Documents\Workspace\bcv\SIGMA\" 
+
+--scan-types "sca"
