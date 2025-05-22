@@ -1,15 +1,17 @@
 version: '3'
-
 services:
   asterisk:
-    image: inivirtual/asterisk
+    # image: andrius/asterisk
+    image: andrius/asterisk
     container_name: asterisk
     ports:
-      - "5060:5060/udp"  # Porta SIP
-      - "5060:5060/tcp"
-      - "10000-20000:10000-20000/udp"  # Portas RTP para chamadas de voz
+      - "5060:5060/udp"      # Porta SIP
+      - "10000-20000:10000-20000/udp"  # RTP para áudio
     volumes:
-      - ./asterisk-config:/etc/asterisk
-    environment:
-      - ASTERISK_DAEMON=1
-    restart: always
+      - ./asterisk_conf:/etc/asterisk
+    networks:
+      - voipnet
+
+networks:
+  voipnet:
+    driver: bridge
