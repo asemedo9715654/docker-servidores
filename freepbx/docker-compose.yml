@@ -1,0 +1,27 @@
+version: '3'
+services:
+  freepbx:
+    image: tiredofit/freepbx
+    container_name: freepbx
+    ports:
+      - "80:80"              # Acesso à interface web
+      - "443:443"            # HTTPS opcional
+      - "5060:5060/udp"      # SIP
+      - "5160:5160/udp"      # SIP PJSIP
+      - "18000-18100:18000-18100/udp"  # RTP
+    environment:
+      - RTP_START=18000
+      - RTP_FINISH=18100
+      - VIRTUALHOST=localhost
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=admin123
+    volumes:
+      - ./data:/data
+      - ./log:/var/log
+    networks:
+      - voipnet
+    restart: always
+
+networks:
+  voipnet:
+    driver: bridge
