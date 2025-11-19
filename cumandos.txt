@@ -1,5 +1,20 @@
 docker-compose up -d
 
+docker-compose down -d
+
+docker compose down
+--rmi all → Remove todas as imagens criadas pelo Compose.
+
+--volumes → Remove todos os volumes associados aos serviços (atenção: dados serão perdidos).
+
+--remove-orphans → Remove containers órfãos que não estão definidos no arquivo docker-compose.yml.
+
+docker compose down --rmi all --volumes --remove-orphans
+
+
+
 
 docker search [nome_da_imagem]
 
+
+https://localhost:8080/?url=http%3A%2F%2Flocalhost%3A5000
