@@ -1,0 +1,6 @@
+services:
+  activiti:
+    image: goldi/activiti-explorer
+    container_name: activiti6
+    ports:
+      - "8080:8080"
