@@ -1,18 +1,17 @@
-version: '3.8'
 services:
   gitlab:
-    image: gitlab/gitlab-ce:latest
+    image: gitlab/gitlab-ce:nightly
     container_name: gitlab
     restart: always
     hostname: 'localhost'
     ports:
-      - '8181:80'      # Porta HTTP para acessar no navegador
-      - '4433:443'     # Porta HTTPS (não obrigatória para localhost)
-      - '2222:22'      # Porta SSH para repositórios Git
+      - '8181:80'      # HTTP
+      - '4433:443'     # HTTPS
+      - '2222:22'      # SSH
     volumes:
       - './config:/etc/gitlab'
       - './logs:/var/log/gitlab'
       - './data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost:8080' # URL para acesso no navegador
+        external_url 'http://localhost:8181'
