@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  elsa:
+    image: ghcr.io/elsa-workflows/elsa-server:latest
+    container_name: elsa-server
+    environment:
+      - ELSA__Server__BaseUrl=http://localhost:8080
+      - ELSA__Features__SqlServer__ConnectionString=Server=db;Database=Elsa;User=sa;Password=Pass@123;TrustServerCertificate=True
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: elsa-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pass@123
+    ports:
+      - "1433:1433"
