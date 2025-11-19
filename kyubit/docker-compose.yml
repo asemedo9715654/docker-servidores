@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  kyubit:
+    image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+    container_name: kyubit
+    ports:
+      - "8080:80"
+    volumes:
+      - ./kyubit_wwwroot:/inetpub/wwwroot
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
