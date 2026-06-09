@@ -1,0 +1,15 @@
+services:
+  openvas:
+    image: immauss/openvas:latest
+    container_name: openvas
+    restart: unless-stopped
+    ports:
+      - "8080:9392"
+    volumes:
+      - openvas_data:/data
+    environment:
+      - PASSWORD=Admin123!
+      - SKIPSYNC=true
+
+volumes:
+  openvas_data:
