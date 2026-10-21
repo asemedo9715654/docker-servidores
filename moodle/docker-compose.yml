@@ -20,7 +20,7 @@ services:
       - moodledata_data:/bitnami/moodledata
 
   mariadb:
-    image: bitnami/mariadb:latest
+    image: soldevelo/mariadb:latest
     container_name: mariadb
     restart: always
     environment:
